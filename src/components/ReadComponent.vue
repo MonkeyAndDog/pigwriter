@@ -1,0 +1,76 @@
+<template>
+  <div>
+    <el-row>
+      <el-col>
+        <router-link to="/"><i class="el-icon-back"></i></router-link>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col>
+        <el-header>
+          <h1 class="title">{{article.title}}</h1>
+          <span style="float: right;" class="time"> <el-icon class="el-icon-time"></el-icon> {{article.createDate}}</span>
+        </el-header>
+        <br>
+        <hr>
+        <el-main class="content" v-html="article.content">
+        </el-main>
+      </el-col>
+    </el-row>
+  </div>
+</template>
+
+<script>
+  import $ from 'jquery'
+  import marked from 'marked'
+
+  let rendererMD = new marked.Renderer();
+  marked.setOptions({
+    renderer: rendererMD,
+    gfm: true,
+    tables: true,
+    breaks: true,
+    pedantic: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false
+  });
+  export default {
+    name: "ReadComponent",
+    data: function () {
+      return {
+        article: {
+          title: '',
+          content: '',
+          createDate: ''
+        }
+      }
+    },
+    mounted: function () {
+      var that = this;
+      $.ajax({
+        url: "http://localhost:8080/pigwriter/article/read?id=" + that.$route.params.p,
+        type: 'post',
+        success: function (result) {
+          result.content = marked(result.content)
+          that.article = result
+        }
+      })
+    },
+    methods: {}
+  }
+</script>
+
+<style scoped>
+  .title {
+    text-align: center;
+  }
+
+  .content {
+    line-height: 2em;
+  }
+
+  .time {
+    text-align: right;
+  }
+</style>

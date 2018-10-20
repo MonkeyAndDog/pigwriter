@@ -7,6 +7,7 @@
       <el-row :gutter="12" class="space">
         <el-col :span="12">
           <el-input id="content"
+                    v-model="content"
                     type="textarea"
                     placeholder="请输入内容"
                     :autosize="{ minRows: 30}"
@@ -31,7 +32,7 @@
         </el-col>
       </el-row>
       <el-row type="flex" class="space" justify="center">
-        <el-button type="primary">提交<i class="el-icon-upload el-icon--right"></i></el-button>
+        <el-button @click="submit" type="primary">提交<i class="el-icon-upload el-icon--right"></i></el-button>
       </el-row>
     </form>
   </div>
@@ -68,6 +69,17 @@
           this.htmlValue = marked($("#content").val())
           $("#html").html(marked($("#content").val()))
         });
+      },
+      submit:function () {
+        var that = this;
+        $.ajax({
+          type: "post",
+          url:"http://localhost:8080/pigwriter/article/add",
+          data: this.$data,
+          success:function (result) {
+            console.log(result)
+          }
+        })
       }
     }
   }

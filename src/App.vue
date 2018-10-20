@@ -1,6 +1,6 @@
 <template>
   <el-row type="flex" justify="center" >
-    <el-col :xs="24" :sm="24" :md="18" :lg="16">
+    <el-col :xs="24" :sm="24" :md="14" :lg="13">
       <el-container id="app">
         <el-header>
           <PageHeader></PageHeader>

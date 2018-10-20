@@ -4,6 +4,7 @@ import PageHome from '../components/PageHome'
 import PageEditor from '../components/PageEditor'
 import PageAbout from '../components/PageAbout'
 import PageLogin from '../components/PageLogin'
+import ReadComponent from '../components/ReadComponent'
 
 Vue.use(Router)
 
@@ -25,9 +26,14 @@ export default new Router({
       component: PageLogin
     },
     {
-      path: '/',
+      path: '/about',
       name: 'PageAbout',
       component: PageAbout
+    },
+    {
+      path: '/read/:p',
+      name: 'read',
+      component: ReadComponent
     }
   ]
 })

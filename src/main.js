@@ -5,8 +5,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import $ from 'jquery'
 
-Vue.config.productionTip = false
-Vue.use(ElementUI)
+Vue.config.productionTip = false;
+Vue.use(ElementUI);
 
 new Vue({
   el: '#app',
@@ -15,7 +15,7 @@ new Vue({
   template: '<App/>',
   mounted:function () {
     router.beforeEach(function (to, from, next) {
-      if (!store.logged_in && to.path === '/edit') {
+      if (!store.logged_in && (to.path === '/edit') || (to.path === '/read/edit')) {
         next('/login')
       } else {
         next()
@@ -29,5 +29,6 @@ var store = {
 };
 
 export default {
-  store
+  store,
+  router
 }
