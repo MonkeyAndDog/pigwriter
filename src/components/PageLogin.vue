@@ -33,7 +33,7 @@
     },
     methods: {
       login: function () {
-        $.post("http://localhost:8080/pigwriter/login", this.$data, function (result) {
+        $.post("http://118.31.62.78:8080/pigwriter/login", this.$data, function (result) {
           console.log(result);
           if (result.state === 200) {
             //验证密码，登录系统

@@ -10,9 +10,10 @@
         <el-header>
           <h1 class="title">{{article.title}}</h1>
           <span style="float: right;" class="time"> <el-icon class="el-icon-time"></el-icon> {{article.createDate}}</span>
+          <br>
         </el-header>
         <br>
-        <hr>
+        <div style="border-bottom: gray solid 0.1em; border-radius: 0.05em"></div>
         <el-main class="content" v-html="article.content">
         </el-main>
       </el-col>
@@ -49,7 +50,7 @@
     mounted: function () {
       var that = this;
       $.ajax({
-        url: "http://localhost:8080/pigwriter/article/read?id=" + that.$route.params.p,
+        url: "http://118.31.62.78:8080/pigwriter/article/read?id=" + that.$route.params.p,
         type: 'post',
         success: function (result) {
           result.content = marked(result.content)
@@ -72,5 +73,17 @@
 
   .time {
     text-align: right;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #000;
+  }
+
+  a:link{
+    color: #000;
   }
 </style>

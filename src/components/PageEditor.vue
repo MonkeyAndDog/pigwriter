@@ -2,14 +2,14 @@
   <div>
     <form>
       <el-row>
-        <el-input v-model="title"></el-input>
+        <el-input v-model="title" placeholder="随便来点什么吧..."></el-input>
       </el-row>
       <el-row :gutter="12" class="space">
         <el-col :span="12">
           <el-input id="content"
                     v-model="content"
                     type="textarea"
-                    placeholder="请输入内容"
+                    placeholder="记下现在想的..."
                     :autosize="{ minRows: 30}"
                     resize="none"
                     v-on:input="parse"
@@ -28,7 +28,7 @@
       </el-row>
       <el-row class="space">
         <el-col>
-          <hr>
+          <div style="border-bottom: lightskyblue solid 0.1em; border-radius: 0.05em"></div>
         </el-col>
       </el-row>
       <el-row type="flex" class="space" justify="center">
@@ -74,7 +74,7 @@
         var that = this;
         $.ajax({
           type: "post",
-          url:"http://localhost:8080/pigwriter/article/add",
+          url:"http://118.31.62.78:8080/pigwriter/article/add",
           data: this.$data,
           success:function (result) {
             console.log(result)
