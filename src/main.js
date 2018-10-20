@@ -25,7 +25,7 @@ new Vue({
 });
 
 var store = {
-  logged_in : false
+  logged_in : false,
 };
 
 export default {

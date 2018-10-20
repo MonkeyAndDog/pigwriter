@@ -41,6 +41,7 @@
 <script>
   import $ from 'jquery'
   import marked from 'marked'
+  import store from '../main'
 
   let rendererMD = new marked.Renderer();
   marked.setOptions({
@@ -60,7 +61,7 @@
       return {
         title: '',
         content: '',
-        htmlValue: ''
+        htmlValue: '',
       }
     },
     methods: {
@@ -70,14 +71,17 @@
           $("#html").html(marked($("#content").val()))
         });
       },
-      submit:function () {
+      submit: function () {
         var that = this;
         $.ajax({
           type: "post",
-          url:"http://118.31.62.78:8080/pigwriter/article/add",
+          url: "http://118.31.62.78:8080/pigwriter/article/add",
           data: this.$data,
-          success:function (result) {
-            console.log(result)
+          success: function (result) {
+            if (result.state === 200) {
+              that.$message.success("提交成功咯~");
+              store.router.push('/');
+            }
           }
         })
       }

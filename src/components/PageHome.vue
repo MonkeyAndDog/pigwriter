@@ -19,6 +19,7 @@
 <script>
   import $ from 'jquery'
   import marked from 'marked'
+  import store from '../main'
 
   let rendererMD = new marked.Renderer();
   marked.setOptions({

@@ -9,7 +9,8 @@
       <el-col>
         <el-header>
           <h1 class="title">{{article.title}}</h1>
-          <span style="float: right;" class="time"> <el-icon class="el-icon-time"></el-icon> {{article.createDate}}</span>
+          <span style="float: right;" class="time"> <el-icon
+            class="el-icon-time"></el-icon> {{article.createDate}}</span>
           <br>
         </el-header>
         <br>
@@ -24,7 +25,7 @@
 <script>
   import $ from 'jquery'
   import marked from 'marked'
-
+  import store from '../main'
   let rendererMD = new marked.Renderer();
   marked.setOptions({
     renderer: rendererMD,
@@ -83,7 +84,7 @@
     color: #000;
   }
 
-  a:link{
+  a:link {
     color: #000;
   }
 </style>
