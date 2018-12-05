@@ -48,7 +48,7 @@
         var that = this;
         $.ajax({
           type: "post",
-          url: "http://118.31.62.78:8080/pigwriter/article/list",
+          url: "http://pigwriter.happzhong.cn/article/list",
           success: function (result) {
             that.articles = result
             for(var i = 0; i < result.length; i++) {
