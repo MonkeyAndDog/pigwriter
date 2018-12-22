@@ -51,7 +51,7 @@
     mounted: function () {
       var that = this;
       $.ajax({
-        url: "http://pigwriter.happzhong.cn/article/read?id=" + that.$route.params.p,
+        url: "http://localhost:8080/pigwriter/article/read?id=" + that.$route.params.p,
         type: 'post',
         success: function (result) {
           result.content = marked(result.content)
