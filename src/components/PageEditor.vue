@@ -75,7 +75,7 @@
         var that = this;
         $.ajax({
           type: "post",
-          url: "http://localhost:8080/pigwriter/article/add",
+          url: "http://www.happyzhong.cn/article/add",
           data: this.$data,
           success: function (result) {
             if (result.state === 200) {
